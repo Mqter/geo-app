@@ -1,0 +1,33 @@
+<div class="weather-container">
+  <h2>Сводка погоды</h2>
+  <form [formGroup]="weatherForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>Город:</mat-label>
+        <input matInput formControlName="city" type="text" class="form-control">
+        <mat-error *ngIf="weatherForm.invalid">
+          Город обязателен для заполнения.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="form-group">
+      <mat-form-field appearance="outline">
+        <mat-label>Дата:</mat-label>
+        <input #dateInput matInput [matDatepicker]="picker" formControlName="date" class="form-control" [min]="minDate"
+               [max]="maxDate" [readonly]="true">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="weatherForm.invalid">
+          Дата обязательна для заполнения.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" type="submit" [disabled]="weatherForm.invalid">Узнать погоду</button>
+  </form>
+  <div *ngIf="weatherData">
+    <h2>Погода в {{ weatherData.name }}</h2>
+    <h2>Дата: {{ weatherData.localtime }}</h2>
+    <h2>Средняя температура: {{ weatherData.avg_temperature }}°C</h2>
+    <h2>Температура в это время: {{ weatherData.cur_temperature }}°C</h2>
+  </div>
+</div>

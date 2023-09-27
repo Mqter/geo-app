@@ -1,0 +1,22 @@
+.weather-container {
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.form-group {
+  margin-bottom: 30px;
+}
+
+.form-control {
+  border-radius: 4px;
+}
+
+mat-error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+
